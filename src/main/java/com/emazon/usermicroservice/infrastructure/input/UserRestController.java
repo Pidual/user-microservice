@@ -41,12 +41,11 @@ public class UserRestController {
 
     @Operation(summary = "Get user by document ID", description = "Retrieve user details by their document ID")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "User found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTORequest.class))),
-                           @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
-    })
+                           @ApiResponse(responseCode = "404", description = "User not found", content = @Content)})
     @GetMapping("/{documentId}")
-    public ResponseEntity<UserDTORequest> getUserByDocumentId(@PathVariable @Schema(description = "The document ID of the user", example = "123456789") Long documentId) {
-        UserDTORequest userDTORequest = userHandler.getUser(documentId);
-        return ResponseEntity.ok(userDTORequest); // Return user as a DTO
+    public ResponseEntity<UserDTOResponse> getUserByDocumentId(@PathVariable @Schema(description = "The document ID of the user", example = "123456789") Long documentId) {
+        UserDTOResponse response = userHandler.getUser(documentId);
+        return ResponseEntity.ok(response); // Return user as a DTO
     }
 
 

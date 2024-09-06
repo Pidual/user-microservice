@@ -8,5 +8,4 @@ public interface IUserRepository extends JpaRepository<UserEntity, Long> {
 
     UserEntity findByDocumentId(Long documentId);
 
-
 }

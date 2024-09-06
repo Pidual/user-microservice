@@ -6,13 +6,14 @@ import com.emazon.usermicroservice.infrastructure.output.jpa.mapper.UserEntityMa
 import com.emazon.usermicroservice.infrastructure.output.jpa.repository.IUserRepository;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 
 @RequiredArgsConstructor
 public class UserJpaAdapter implements IUserPersistencePort {
 
     private final IUserRepository userRepository;
     private final UserEntityMapper userEntityMapper;
-
 
     @Override
     public void saveUser(User user) {
@@ -22,6 +23,11 @@ public class UserJpaAdapter implements IUserPersistencePort {
     @Override
     public User getUser(Long documentId) {
         return userEntityMapper.toUser(userRepository.findByDocumentId(documentId));
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return userRepository.findAll().stream().map(userEntityMapper::toUser).toList();
     }
 
 

@@ -27,12 +27,12 @@ public class UserUseCase implements IUserServicePort {
 
     @Override
     public User getUserByDocumentId(Long documentId) {
-        return null;
+        return userJpaAdapter.getUser(documentId);
     }
 
     @Override
     public List<User> getAllUsers() {
-        return List.of();
+        return  userJpaAdapter.getUsers();
     }
 
 

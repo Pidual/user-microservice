@@ -36,17 +36,13 @@ public class UserHandler implements IUserHandler{
 
     @Override
     public UserDTOResponse getUser(Long documentId) {
-        // Obtener el usuario desde el caso de uso (dominio)
-        User user = userUseCase.getUserByDocumentId(documentId);
-        // Mapear el modelo de dominio User a UserDTOResponse
+        User user = userUseCase.getUserByDocumentId(documentId);  // Obtener el usuario desde el caso de uso (dominio)
         return userResponseMapper.toResponse(user);
     }
 
     @Override
     public List<UserDTOResponse> getAllUsers() {
-        /
         List<User> users = userUseCase.getAllUsers();
-
         return users.stream().map(userResponseMapper::toResponse).collect(Collectors.toList());
     }
 }

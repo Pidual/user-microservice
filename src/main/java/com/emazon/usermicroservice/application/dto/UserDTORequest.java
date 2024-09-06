@@ -52,6 +52,7 @@ public class UserDTORequest {
     @Email(message = "El correo debe tener un formato válido")
     private String email;
 
-    private Role role;
+    @NotBlank( message = "el Id del rol no peude estar vacio")
+    private Long idRole;
 
 }
