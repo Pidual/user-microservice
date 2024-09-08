@@ -15,7 +15,7 @@ public class UserDTOResponse {
     private Long id;
     private String name;
     private String lastName;
-    private String cc;
+    private String documentId;
     private LocalDate birthDate;
     private String email;
     private String phone;

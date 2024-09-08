@@ -1,14 +1,15 @@
 package com.emazon.usermicroservice.domain.model;
 
+
 import java.time.LocalDate;
 
 public class User {
 
-    private String name;
+    private String firstName;
 
     private String lastName;
 
-    private Long documentId;
+    private String documentId;
 
     private String phoneNumber;
 
@@ -18,10 +19,10 @@ public class User {
 
     private String password;
 
-    private Role role;
+    private RoleEnum role;
 
-    public User(String name, String lastName, String phoneNumber, Long documentId, LocalDate birthDate, String email, String password, Role role) {
-        this.name = name;
+    public User(String firstName, String lastName, String phoneNumber, String documentId, LocalDate birthDate, String email, String password, RoleEnum role) {
+        this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.documentId = documentId;
@@ -32,19 +33,19 @@ public class User {
     }
 
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public Long getDocumentId() {
+    public String getDocumentId() {
         return documentId;
     }
 
-    public void setDocumentId(Long documentId) {
+    public void setDocumentId(String documentId) {
         this.documentId = documentId;
     }
 
@@ -88,11 +89,11 @@ public class User {
         this.password = password;
     }
 
-    public Role getRol() {
+    public RoleEnum getRol() {
         return role;
     }
 
-    public void setRol(Role role) {
+    public void setRole(RoleEnum role) {
         this.role = role;
     }
 }

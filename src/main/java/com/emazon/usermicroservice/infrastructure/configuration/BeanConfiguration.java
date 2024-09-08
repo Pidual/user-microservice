@@ -27,4 +27,5 @@ public class BeanConfiguration {
     public IUserPersistencePort userPersistencePort() {
         return new UserJpaAdapter(userRepository, userEntityMapper);
     }
+
 }

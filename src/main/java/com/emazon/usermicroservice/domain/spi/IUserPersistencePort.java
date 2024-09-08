@@ -8,7 +8,7 @@ public interface IUserPersistencePort {
 
     void saveUser(User user);
 
-    User getUser(Long documentId);
+    User getUser(String documentId);
 
-    List<User> getUsers();
+
 }

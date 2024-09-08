@@ -1,10 +1,9 @@
 package com.emazon.usermicroservice.infrastructure.output.jpa.entity;
 
+import com.emazon.usermicroservice.domain.model.RoleEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.time.LocalDate;
 
 @Entity
@@ -13,20 +12,22 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="id")
     private Long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "firstName", nullable = false, length = 100)
     private String firstName;
 
-    @Column(nullable = false, length = 100)
+    @Column(name="lastName", nullable = false, length = 100)
     private String lastName;
 
     @Column(nullable = false, unique = true, length = 20)
-    private Long documentId; // String to handle leading zeros or any format
+    private String documentId; // String to handle leading zeros or any format
 
     @Column(nullable = false, length = 13)
     private String phoneNumber; // Phone numbers with a maximum of 13 characters and possible "+" symbol
@@ -40,8 +41,6 @@ public class UserEntity {
     @Column(nullable = false)
     private String password; // Encrypted with bcrypt when stored
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_id", nullable = false)
-    private RoleEntity role; // Assign the "aux_bodega" role
-
+    @Enumerated(EnumType.STRING)
+    private RoleEnum roleEnum; // Assign the "aux_bodega" role
 }

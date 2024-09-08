@@ -9,8 +9,5 @@ public interface IUserServicePort {
 
     void saveUser(User user);
 
-    User getUserByDocumentId(Long documentId);
-
-    List<User> getAllUsers();
 
 }
