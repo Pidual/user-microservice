@@ -18,32 +18,48 @@ repositories {
 }
 
 dependencies {
+
+	// Spring Boot Web Starter
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Spring Boot JPA Starter
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Spring Boot Security Starter (para autenticación y autorización)
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// BCrypt Password Encoder
+	implementation 'org.springframework.security:spring-security-crypto'
+
+	// JWT para manejar tokens de autenticación
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+	// Lombok para evitar el código boilerplate
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
+	// SpringDoc para generar documentación OpenAPI (Swagger UI)
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 
+	// MapStruct para el mapeo de objetos
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 	testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 
-	// JUnit 5 (actualiza a una versión más reciente)
+	// JUnit 5 para pruebas unitarias
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
 
-	// Mockito
+	// Mockito para mockear dependencias en pruebas
 	testImplementation 'org.mockito:mockito-core:4.0.0'
 
-	// Spring Boot Starter Test (ya incluye JUnit 5 y Mockito)
+	// Spring Boot Starter Test (incluye JUnit 5 y Mockito)
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	// Conector MySQL (solo necesario si usas MySQL en pruebas)
+	// MySQL Connector (si usas MySQL en tu base de datos)
 	runtimeOnly 'com.mysql:mysql-connector-j'
-
-	//Springboot security
-	implementation 'org.springframework.security:spring-security-crypto'
 }
 
 tasks.named('test') {

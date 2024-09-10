@@ -1,10 +1,15 @@
 package com.emazon.usermicroservice.infrastructure.output.jpa.entity;
 
-import com.emazon.usermicroservice.domain.model.RoleEnum;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -13,7 +18,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserEntity {
+public class UserEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +46,40 @@ public class UserEntity {
     @Column(nullable = false)
     private String password; // Encrypted with bcrypt when stored
 
-    @Enumerated(EnumType.STRING)
-    private RoleEnum roleEnum; // Assign the "aux_bodega" role
+    @ManyToOne
+    @JoinColumn(name = "id_rol", nullable = false) //is this a number i think
+    private RoleEntity role;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+        return authorities;
+    }
+
+    @Override
+    public String getUsername() { //el identifgicador de uno usa
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 }

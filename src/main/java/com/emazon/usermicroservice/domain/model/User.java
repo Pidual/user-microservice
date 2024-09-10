@@ -19,13 +19,14 @@ public class User {
 
     private String password;
 
-    private RoleEnum role;
+    private Role role;
 
-    public User(String firstName, String lastName, String phoneNumber, String documentId, LocalDate birthDate, String email, String password, RoleEnum role) {
+
+    public User(String firstName, String lastName, String documentId, String phoneNumber, LocalDate birthDate, String email, String password, Role role) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
         this.documentId = documentId;
+        this.phoneNumber = phoneNumber;
         this.birthDate = birthDate;
         this.email = email;
         this.password = password;
@@ -41,20 +42,20 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getDocumentId() {
-        return documentId;
-    }
-
-    public void setDocumentId(String documentId) {
-        this.documentId = documentId;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
     public String getPhoneNumber() {
@@ -89,11 +90,11 @@ public class User {
         this.password = password;
     }
 
-    public RoleEnum getRol() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(RoleEnum role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }

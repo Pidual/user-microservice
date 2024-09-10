@@ -2,8 +2,10 @@ package com.emazon.usermicroservice.domain.usecase;
 
 import com.emazon.usermicroservice.domain.api.IUserServicePort;
 import com.emazon.usermicroservice.domain.exceptions.UserAlreadyExistsException;
+import com.emazon.usermicroservice.domain.exceptions.WrongEmailException;
 import com.emazon.usermicroservice.domain.model.User;
 import com.emazon.usermicroservice.domain.spi.IUserPersistencePort;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -13,17 +15,30 @@ public class UserUseCase implements IUserServicePort {
 
     private final IUserPersistencePort userJpaAdapter;
 
+    private final static String NOT_FOUND_ERROR = "NO Ecntramos what ever you wanted";
 
     public UserUseCase(IUserPersistencePort userJpaAdapter) {
         this.userJpaAdapter = userJpaAdapter;
     }
 
     @Override
-    public void saveUser(User user) {
-        validateUser(user);
-        if(userJpaAdapter.getUser(user.getDocumentId()) != null){
-            throw new UserAlreadyExistsException();
+    public User getUserByEmail(String email){
+        User user = userJpaAdapter.getUserByEmail(email);
+
+        if(user == null) {
+            throw new WrongEmailException(NOT_FOUND_ERROR);
         }
+        return user;
+
+    }
+
+
+
+    @Override
+    public void saveUser(User user) {
+        String email = user.getEmail();
+        validateUser(user);
+        userJpaAdapter.getUserByEmail(email);
         userJpaAdapter.saveUser(user);
     }
 

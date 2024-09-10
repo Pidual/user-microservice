@@ -9,5 +9,6 @@ public interface IUserServicePort {
 
     void saveUser(User user);
 
+    User getUserByEmail(String email);
 
 }

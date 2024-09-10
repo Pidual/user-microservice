@@ -23,8 +23,8 @@ public class UserRestController {
     private final IUserHandler userHandler;
 
 
-    @PostMapping("/")
-    public ResponseEntity<String> createAuxBodega(@RequestBody UserDTORequest userDTORequest) {
+    @PostMapping("/aux_bodega")
+    public ResponseEntity<String> addUser(@RequestBody UserDTORequest userDTORequest) {
         userHandler.saveUser(userDTORequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
