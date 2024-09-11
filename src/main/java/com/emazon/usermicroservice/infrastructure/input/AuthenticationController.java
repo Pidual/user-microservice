@@ -23,8 +23,4 @@ public class AuthenticationController {
         return ResponseEntity.ok(jwtDto);
     }
 
-    @GetMapping("/public-access")
-    public String publicAccessEndpoint(){
-        return "este endpoint es publico";
-    }
 }

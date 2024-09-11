@@ -29,5 +29,9 @@ public class UserRestController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
+    @PostMapping("/admin")
+    public ResponseEntity<String> addAdmin(@RequestBody UserDTORequest userDTORequest) {
+        userHandler.saveAdmin(userDTORequest);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }

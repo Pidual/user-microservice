@@ -18,7 +18,7 @@ import java.util.function.Function;
 public class JwtService {
 
     private long EXPIRATION_MINUTES = 30;
-    private String SECRET_KEY = "AWIASIDJSAIDJAKSDASDJOEL; PEPE ETHE SESCH H! SADA WAAZAFDSOFKOSLDFK XD XD DX OKDSLDSA";
+    private String SECRET_KEY = "7OCOuld01GpRMRt3J9KWw1hGcvKTtcbxxfvLNx8JF+g=";
 
     public String generateToken(User user, Map<String, Object> extraClaims) {
 
@@ -48,8 +48,9 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
+
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+        return Jwts.parser().setSigningKey(generateKey()).parseClaimsJws(token).getBody();
     }
 
     public boolean validateToken(String token, UserDetails userDetails) {

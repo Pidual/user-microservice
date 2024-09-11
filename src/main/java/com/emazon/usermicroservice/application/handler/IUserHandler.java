@@ -8,4 +8,5 @@ public interface IUserHandler {
 
     void saveUser(UserDTORequest user);
 
+    void saveAdmin(UserDTORequest admin);
 }
