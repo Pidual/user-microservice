@@ -1,4 +1,4 @@
-package com.emazon.user_microservice;
+package com.emazon.usermicroservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
