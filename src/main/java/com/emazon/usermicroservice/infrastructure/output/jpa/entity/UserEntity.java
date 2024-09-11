@@ -47,7 +47,7 @@ public class UserEntity implements UserDetails {
     private String password; // Encrypted with bcrypt when stored
 
     @ManyToOne
-    @JoinColumn(name = "id_rol", nullable = false) //is this a number i think
+    @JoinColumn(name = "id_rol", nullable = false)
     private RoleEntity role;
 
     @Override
@@ -58,28 +58,8 @@ public class UserEntity implements UserDetails {
     }
 
     @Override
-    public String getUsername() { //el identifgicador de uno usa
+    public String getUsername() {
         return email;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 
 }

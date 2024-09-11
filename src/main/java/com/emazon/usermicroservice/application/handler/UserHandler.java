@@ -27,12 +27,10 @@ public class UserHandler implements IUserHandler {
     public void saveUser(UserDTORequest request) {
         User user = userRequestMapper.toUser(request);
         // Encrypt password here
-
         String password = passwordEncoder.encode(user.getPassword());
-        System.out.println(password);
         user.setPassword(password);
 
-        user.setRole( roleUseCase.getRole(request.getRole_id()));
+        user.setRole( roleUseCase.getRole(request.getRoleId()));
         userUseCase.saveUser(user);
     }
 
@@ -41,10 +39,8 @@ public class UserHandler implements IUserHandler {
         User user = userRequestMapper.toUser(admin);
         // Encrypt password here
         String password = passwordEncoder.encode(user.getPassword());
-        System.out.println(password);
         user.setPassword(password);
-
-        user.setRole( roleUseCase.getRole(admin.getRole_id()));
+        user.setRole( roleUseCase.getRole(admin.getRoleId()));
         userUseCase.saveUser(user);
     }
 

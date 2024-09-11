@@ -40,5 +40,5 @@ public class UserDTORequest {
     private String phoneNumber;
 
     @NotNull(message = "El nombre del rol no puede estar vacío.")
-    private Long role_id;
+    private Long roleId;
 }
