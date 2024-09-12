@@ -6,6 +6,11 @@ public class Role {
     private String roleName;
     private String roleDescription;
 
+
+    public Role() {
+
+    }
+
     public Role(Long roleId, String roleName, String roleDescription) {
         this.roleId = roleId;
         this.roleName = roleName;

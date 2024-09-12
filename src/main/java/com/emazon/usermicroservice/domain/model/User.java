@@ -21,6 +21,8 @@ public class User {
 
     private Role role;
 
+    public User(){}
+
 
     public User(String firstName, String lastName, String documentId, String phoneNumber, LocalDate birthDate, String email, String password, Role role) {
         this.firstName = firstName;
