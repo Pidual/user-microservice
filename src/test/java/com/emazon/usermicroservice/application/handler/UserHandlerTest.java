@@ -84,22 +84,4 @@ class UserHandlerTest {
         // Ensure that the user object now has the encrypted password
         assert(user.getPassword().equals("encryptedPassword123"));
     }
-
-    @Test
-    void testSaveAdmin() {
-        // Act
-        userHandler.saveAdmin(userDTORequest);
-
-        // Assert that the password was encrypted
-        verify(passwordEncoder).encode("password123");
-
-        // Assert that the role was retrieved from roleUseCase
-        verify(roleUseCase).getRole(2L);
-
-        // Assert that the user was saved
-        verify(userUseCase).saveUser(user);
-
-        // Ensure that the user object now has the encrypted password
-        assert(user.getPassword().equals("encryptedPassword123"));
-    }
 }

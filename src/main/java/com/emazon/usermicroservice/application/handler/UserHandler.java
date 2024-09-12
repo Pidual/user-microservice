@@ -34,15 +34,5 @@ public class UserHandler implements IUserHandler {
         userUseCase.saveUser(user);
     }
 
-    @Override
-    public void saveAdmin(UserDTORequest admin) {
-        User user = userRequestMapper.toUser(admin);
-        // Encrypt password here
-        String password = passwordEncoder.encode(user.getPassword());
-        user.setPassword(password);
-        user.setRole( roleUseCase.getRole(admin.getRoleId()));
-        userUseCase.saveUser(user);
-    }
-
 
 }

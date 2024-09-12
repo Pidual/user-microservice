@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+import static com.emazon.usermicroservice.common.Constants.*;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,13 +34,13 @@ public class UserDTORequest {
     @Email(message = "Debe proporcionar un correo electrónico válido.")
     private String email;
 
-    @NotBlank(message = "La contraseña no puede estar vacía.")
+    @NotBlank(message = EMPTY_PASSWORD_ERROR_MESSAGE)
     private String password;
 
-    @NotBlank(message = "El teléfono no puede estar vacío.")
-    @Pattern(regexp = "^\\+?\\d{1,13}$", message = "El teléfono debe contener un máximo de 13 caracteres y puede contener el símbolo +.")
+    @NotBlank(message = PHONE_NUMBER_ERROR_MESSAGE)
+    @Pattern(regexp = "^\\+?\\d{1,13}$", message = PHONE_NUMBER_ERROR_MESSAGE)
     private String phoneNumber;
 
-    @NotNull(message = "El nombre del rol no puede estar vacío.")
+    @NotNull(message = EMPTY_ROL_ERROR_MESSAGE)
     private Long roleId;
 }
