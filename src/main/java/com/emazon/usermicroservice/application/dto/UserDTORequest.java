@@ -16,22 +16,22 @@ import static com.emazon.usermicroservice.common.Constants.*;
 @AllArgsConstructor
 public class UserDTORequest {
 
-    @NotBlank(message = "El nombre no puede estar vacío.")
+    @NotBlank(message = USER_FIRST_NAME_ERROR_MESSAGE)
     private String firstName;
 
-    @NotBlank(message = "El apellido no puede estar vacío.")
+    @NotBlank(message = USER_SECOND_NAME_ERROR_MESSAGE)
     private String lastName;
 
-    @NotBlank(message = "El documento de identidad no puede estar vacío.")
-    @Pattern(regexp = "\\d+", message = "El documento de identidad debe ser numérico.")
+    @NotBlank(message = DOCUMENT_ID_ERROR_MESSAGE)
+    @Pattern(regexp = "\\d+", message = DOCUMENT_ID_ERROR_MESSAGE)
     private String documentId;
 
-    @NotNull(message = "La fecha de nacimiento no puede estar vacía.")
-    @Past(message = "La fecha de nacimiento debe ser en el pasado.")
+    @NotNull(message = EMPTY_BIRTHDATE_ERROR_MESSAGE)
+    @Past(message = UNDERAGE_ERROR_MESSAGE)
     private LocalDate birthDate;
 
-    @NotBlank(message = "El correo no puede estar vacío.")
-    @Email(message = "Debe proporcionar un correo electrónico válido.")
+    @NotBlank(message = WRONG_EMAIL_ERROR_MESSAGE)
+    @Email(message = WRONG_EMAIL_ERROR_MESSAGE)
     private String email;
 
     @NotBlank(message = EMPTY_PASSWORD_ERROR_MESSAGE)
