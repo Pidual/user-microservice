@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,16 +23,18 @@ public class UserRestController {
 
     private final IUserHandler userHandler;
 
-
+   // @pre authorize este decorador asegura que solo los usuarios con el rol ROLE_ADMIN pueden acceder al endpoint /users/aux_bodega.
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/aux_bodega")
-    public ResponseEntity<String> addUser(@RequestBody UserDTORequest userDTORequest) {
-        userHandler.saveUser(userDTORequest);
+    public ResponseEntity<String> addAuxBodega(@RequestBody UserDTORequest userDTORequest) {
+        userHandler.saveAuxBodega(userDTORequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/admin")
-    public ResponseEntity<String> addAdmin(@RequestBody UserDTORequest userDTORequest) {
-        userHandler.saveAdmin(userDTORequest);
+
+    @PostMapping("/client")
+    public ResponseEntity<String> addClient(@RequestBody UserDTORequest userDTORequest) {
+        userHandler.saveClient(userDTORequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

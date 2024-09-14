@@ -6,7 +6,7 @@ import com.emazon.usermicroservice.application.dto.UserDTORequest;
 
 public interface IUserHandler {
 
-    void saveUser(UserDTORequest user);
+    void saveAuxBodega(UserDTORequest user);
 
-    void saveAdmin(UserDTORequest admin);
+    void saveClient(UserDTORequest request);
 }
