@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serial;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,6 +20,9 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class UserEntity implements UserDetails {
+
+    @Serial
+    private static final long serialVersionUID = 1L; //this is bc dam sonarlint is anoying
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

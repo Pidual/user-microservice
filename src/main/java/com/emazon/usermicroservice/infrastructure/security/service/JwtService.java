@@ -15,10 +15,12 @@ import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
 
+import static com.emazon.usermicroservice.common.Constants.*;
+
 @Service
 public class JwtService {
 
-    private long EXPIRATION_MINUTES = 30;
+
 
     // Usamos una clave secreta más segura, codificada en base64
     private String SECRET_KEY = "7OCOuld01GpRMRt3J9KWw1hGcvKTtcbxxfvLNx8JF+g=";  // Base64 encoded key
@@ -26,8 +28,9 @@ public class JwtService {
     // Método para generar el token
     public String generateToken(User user, Map<String, Object> extraClaims) {
 
+        extraClaims.put("role", user.getRole().getRoleName());
         Date issuedAt = new Date(System.currentTimeMillis());
-        Date expiration = new Date(issuedAt.getTime() + EXPIRATION_MINUTES * 60 * 1000);
+        Date expiration = new Date(issuedAt.getTime() + EXPIRATION_MINUTES * EXPIRATION_HOURS * EXPIRATION_MILLISECONDS);
 
         return Jwts.builder().setClaims(extraClaims)
                 .setSubject(user.getEmail())
