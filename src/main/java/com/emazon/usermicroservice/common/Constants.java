@@ -7,6 +7,9 @@ public class Constants {
     }
 
 
+    public static final Long ROLE_ADMIN = 1L;
+    public static final Long ROLE_AUX_BODEGA = 2L;
+    public static final Long ROLE_USER = 3L;
     public static final String USER_FIRST_NAME_ERROR_MESSAGE = "El primer no puede estar vacio";
     public static final String USER_SECOND_NAME_ERROR_MESSAGE = "El segundo nombre no puede estar vacio";
     public static final String DOCUMENT_ID_ERROR_MESSAGE = "El documento de identidad debe ser solamente numerico y no puede estar vacio";
@@ -18,7 +21,7 @@ public class Constants {
     public static final String EMPTY_PASSWORD_ERROR_MESSAGE = "La Contraseña no puede estar vacia";
 
 
-    public static final String EMPTY_BIRTHDATE_ERROR_MESSAGE ="La fecha de nacimiento no puede estar vacía."
+    public static final String EMPTY_BIRTHDATE_ERROR_MESSAGE ="La fecha de nacimiento no puede estar vacía.";
     public static final String EMPTY_ROL_ERROR_MESSAGE = "El campo de rol no puede estar vacio";
     public static final String ROL_NOT_FOUND_ERROR_MESSAGE = "EL ROL NO FUE ENCONTRADO";
 

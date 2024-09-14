@@ -33,7 +33,10 @@ public class UserUseCase implements IUserServicePort {
     public void saveUser(User user) {
         String email = user.getEmail();
         validateUser(user);
-        userJpaAdapter.getUserByEmail(email);
+        //validar que el user ya exista
+        if(userJpaAdapter.getUserByEmail(email) != null) {
+            throw new UserAlreadyExistsException();
+        }
         userJpaAdapter.saveUser(user);
     }
 
@@ -60,7 +63,6 @@ public class UserUseCase implements IUserServicePort {
         if(user.getPassword() == null || user.getPassword().isEmpty()) {
             throw new EmptyPasswordException(EMPTY_PASSWORD_ERROR_MESSAGE);
         }
-
     }
 
     private boolean isAdult(LocalDate birthDate) {

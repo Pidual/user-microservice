@@ -40,7 +40,4 @@ public class UserDTORequest {
     @NotBlank(message = PHONE_NUMBER_ERROR_MESSAGE)
     @Pattern(regexp = "^\\+?\\d{1,13}$", message = PHONE_NUMBER_ERROR_MESSAGE)
     private String phoneNumber;
-
-    @NotNull(message = EMPTY_ROL_ERROR_MESSAGE)
-    private Long roleId;
 }

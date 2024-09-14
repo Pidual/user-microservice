@@ -11,6 +11,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import static com.emazon.usermicroservice.common.Constants.ROLE_AUX_BODEGA;
+import static com.emazon.usermicroservice.common.Constants.ROLE_USER;
 
 
 @Service
@@ -23,14 +25,23 @@ public class UserHandler implements IUserHandler {
     private final UserRequestMapper userRequestMapper;
     private final BCryptPasswordEncoder passwordEncoder;
 
+    // 1 = admin
+    // 2 = aux bodega
+    // 3 = client
 
-    public void saveUser(UserDTORequest request) {
+    public void saveAuxBodega(UserDTORequest request) {
         User user = userRequestMapper.toUser(request);
-        // Encrypt password here
         String password = passwordEncoder.encode(user.getPassword());
         user.setPassword(password);
+        user.setRole( roleUseCase.getRole(ROLE_AUX_BODEGA));
+        userUseCase.saveUser(user);
+    }
 
-        user.setRole( roleUseCase.getRole(request.getRoleId()));
+    public void saveClient(UserDTORequest client) {
+        User user = userRequestMapper.toUser(client);
+        String password = passwordEncoder.encode(user.getPassword());
+        user.setPassword(password);
+        user.setRole( roleUseCase.getRole(ROLE_USER));
         userUseCase.saveUser(user);
     }
 

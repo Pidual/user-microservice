@@ -49,7 +49,6 @@ class UserHandlerTest {
         userDTORequest.setBirthDate(java.time.LocalDate.of(1990, 1, 1));
         userDTORequest.setEmail("john.doe@example.com");
         userDTORequest.setPassword("password123");
-        userDTORequest.setRoleId(2L);
 
         role = new Role();
         role.setRoleId(2L);
@@ -70,7 +69,7 @@ class UserHandlerTest {
     @Test
     void testSaveUser() {
         // Act
-        userHandler.saveUser(userDTORequest);
+        userHandler.saveAuxBodega(userDTORequest);
 
         // Assert that the password was encrypted
         verify(passwordEncoder).encode("password123");
