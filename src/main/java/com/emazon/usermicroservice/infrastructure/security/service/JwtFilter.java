@@ -13,6 +13,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+import static com.emazon.usermicroservice.common.Constants.*;
+
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
@@ -28,13 +30,13 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //Obetenere el token JWT del encabexado
-        String authHeader = request.getHeader("Authorization");
+        String authHeader = request.getHeader(JWT_HEADER);
         String jwtToken = null;
         String username = null;
 
         // Validar que el encabezado contiene el token y tiene la estructura adecuada
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            jwtToken = authHeader.substring(7); // ESTE 7 ES BIEN AGOGO XD
+        if (authHeader != null && authHeader.startsWith(JWT_PREFIX)) {
+            jwtToken = authHeader.substring(JWT_TOKEN_BEGIN_INDEX); // ESTE 7 ES BIEN AGOGO XD
             username = jwtService.extractUsername(jwtToken); // Obtener el username del token
         }
 
@@ -52,7 +54,6 @@ public class JwtFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
-
         // Continuar con el siguiente filtro
         filterChain.doFilter(request, response);
     }

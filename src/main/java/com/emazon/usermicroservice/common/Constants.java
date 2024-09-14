@@ -6,7 +6,7 @@ public class Constants {
         throw new IllegalStateException("Utility class");
     }
 
-
+    //DOMAIN
     public static final Long ROLE_ADMIN = 1L;
     public static final Long ROLE_AUX_BODEGA = 2L;
     public static final Long ROLE_USER = 3L;
@@ -24,6 +24,16 @@ public class Constants {
     public static final String EMPTY_BIRTHDATE_ERROR_MESSAGE ="La fecha de nacimiento no puede estar vacía.";
     public static final String EMPTY_ROL_ERROR_MESSAGE = "El campo de rol no puede estar vacio";
     public static final String ROL_NOT_FOUND_ERROR_MESSAGE = "EL ROL NO FUE ENCONTRADO";
+
+    //JWT
+    public static final long EXPIRATION_MINUTES = 30;
+    public static final long EXPIRATION_HOURS = 30;
+    public static final long EXPIRATION_MILLISECONDS = 1000;
+
+    public static final String JWT_HEADER = "Authorization";
+    public static final String JWT_PREFIX = "Bearer ";
+    public static final int JWT_TOKEN_BEGIN_INDEX = 7;
+
 
 
 

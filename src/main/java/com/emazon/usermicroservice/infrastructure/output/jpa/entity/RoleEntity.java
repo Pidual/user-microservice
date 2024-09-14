@@ -12,6 +12,7 @@ import lombok.*;
 @Builder
 public class RoleEntity{
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
