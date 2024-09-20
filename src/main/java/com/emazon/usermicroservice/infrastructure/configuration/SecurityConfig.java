@@ -24,16 +24,16 @@ public class SecurityConfig {
         this.jwtFilter = jwtFilter;
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth ->auth
-                        .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/users/client").permitAll()
-                        .requestMatchers("/users/aux_bodega").authenticated()
-                        .anyRequest().authenticated()).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-        return http.build();
-    }
+        @Bean
+        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+            http.csrf(AbstractHttpConfigurer::disable)
+                    .authorizeHttpRequests(auth ->auth
+                            .requestMatchers("/auth/**").permitAll()
+                            .requestMatchers("/users/client").permitAll()
+                            .requestMatchers("/users/aux_bodega").authenticated()
+                            .anyRequest().authenticated()).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+            return http.build();
+        }
 
 
     @Bean
