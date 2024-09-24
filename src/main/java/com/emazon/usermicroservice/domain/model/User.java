@@ -6,19 +6,12 @@ import java.time.LocalDate;
 public class User {
 
     private String firstName;
-
     private String lastName;
-
     private String documentId;
-
     private String phoneNumber;
-
     private LocalDate birthDate;
-
     private String email;
-
     private String password;
-
     private Role role;
 
     public User(){}
